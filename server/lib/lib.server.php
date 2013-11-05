@@ -25,6 +25,7 @@ function MqServiceCreate( $host , $port ) {
                     if ( $input == __STOP__ ) {
                         MqServiceRunShell($data);
                         socket_close($spawn);
+                        socket_close($socket);
                         break;
 
                     } elseif ( $input == __QUERY__ ) {
