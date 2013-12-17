@@ -8,4 +8,4 @@ MqSocket::addServer('127.0.0.1','65501');
 MqSocket::query (array('act' => 'test','data'=>'myQueryTest'));
 
 var_dump ( MqSocket::getReturn() );
-#var_dump ( MqSocket::getError() );
+var_dump ( MqSocket::getError() );
