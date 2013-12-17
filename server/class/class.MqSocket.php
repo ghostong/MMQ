@@ -46,7 +46,7 @@ class MqSocket {
 
     }
 
-	static function checkArgv(){
+	static function checkArgv($queryArr){
 		if( empty($queryArr['act']) ) {
 			throw new Exception ('#6');
 		}	
