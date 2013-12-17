@@ -16,4 +16,4 @@ $cfg['free_time'] = 120;
 
 $cfg['php_path'] = '/usr/bin/php';
 
-#$cfg['run_shell'] = './ext/ext.shell.php';
+$cfg['run_shell'] = './ext/ext.shell.php';
