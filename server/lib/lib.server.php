@@ -84,7 +84,7 @@ function MqServiceRunShell($data){
     if (empty ($data)){
         return;
     }
-
+var_dump ($data);
     $GLOBALS['last_query_time'] = date('Y-m-d H:i:s');
     $GLOBALS['query_times'] ++ ;
     $GLOBALS['query_count'] +=count($data) ;
