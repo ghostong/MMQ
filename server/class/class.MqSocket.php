@@ -106,6 +106,7 @@ class MqSocket {
 
     static private function socketWrite( $contents ){
         if ( $contents ) {
+			var_dump (self::$objSocket ,$contents ,strlen( $contents ));
             $result = @socket_write( self::$objSocket ,$contents ,strlen( $contents ) );
 
             if ( !$result ){
