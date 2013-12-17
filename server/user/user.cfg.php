@@ -8,7 +8,7 @@ $cfg['host'] = array (
     array ('host' => '0.0.0.0' , 'port' => '65505'),
 );
 
-$cfg['max_cache'] = 1;
+$cfg['max_cache'] = 10;
 
 $cfg['pid_file'] = '/tmp/mq.pid';
 

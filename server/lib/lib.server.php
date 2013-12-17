@@ -27,7 +27,7 @@ function MqServiceCreate( $host , $port ) {
                         MqServiceRunShell($data);
                         socket_close($spawn);
                         socket_close($socket);
-                        break;
+						exit;
 
                     } elseif ( $input['act'] == __QUERY__ ) {
                         MqServiceRunShell($data);
@@ -55,8 +55,6 @@ function MqServiceCreate( $host , $port ) {
                     } else {
                         socket_write($spawn,true,strlen(true)) or die("Could not write output".PHP_EOL);
                         $data[]=$input;
-						echo 11111111111111111111111111;
-						var_dump ($i , $GLOBALS['cfg']['max_cache'],$input);
                         if ($i >= $GLOBALS['cfg']['max_cache']){
                             MqServiceRunShell($data);
                             $data = array();
@@ -86,7 +84,6 @@ function MqServiceRunShell($data){
     if (empty ($data)){
         return;
     }
-var_dump ($data);
     $GLOBALS['last_query_time'] = date('Y-m-d H:i:s');
     $GLOBALS['query_times'] ++ ;
     $GLOBALS['query_count'] +=count($data) ;
