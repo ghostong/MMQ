@@ -106,17 +106,13 @@ class MqSocket {
 
     static private function socketWrite( $contents ){
         if ( $contents ) {
-			var_dump (self::$objSocket ,$contents ,strlen( $contents ));
             $result = @socket_write( self::$objSocket ,$contents ,strlen( $contents ) );
-
             if ( !$result ){
                 throw new Exception ('#5');
-
             }
 
         }else{
             throw new Exception ('#4');
-
         }
 
     }
