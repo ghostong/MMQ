@@ -23,8 +23,7 @@ class MqSocket {
             self::socketCreate();
             self::socketConnect();
 			$queryStr = serialize ($queryArr);
-            #self::socketWrite( $queryStr );
-			self::socketWrite( 'uueouhneohu' );
+            self::socketWrite( $queryStr );
             self::socketRead();
             self::socketClose();
 
