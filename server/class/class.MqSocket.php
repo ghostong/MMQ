@@ -16,11 +16,13 @@ class MqSocket {
         self::$hostList[] = array ( 'host' =>$host , 'port'=>$port );
     }
 
-    static function query( $queryStr ){
+    static function query( $queryArr ){
         try {
+			self::checkArgv($queryArr);
             self::socketQueryHost();
             self::socketCreate();
             self::socketConnect();
+			$queryStr = serialize ($queryArr);
             self::socketWrite( $queryStr );
             self::socketRead();
             self::socketClose();
@@ -43,6 +45,12 @@ class MqSocket {
 
     }
 
+	static function checkArgv(){
+		if( empty($queryArr['act']) ) {
+			throw new Exception ('#5');
+		}	
+	}
+	
     static function getReturn(){
         return self::$readResult;
 
@@ -138,6 +146,7 @@ class MqSocket {
             '#3' => 'Socket Connect Error',
             '#4' => 'Socket Write Contents Empyt',
             '#5' => 'Socket Write Error',
+			'#6' => 'Query Param Error',
         );
 
     }

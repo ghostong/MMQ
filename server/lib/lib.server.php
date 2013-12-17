@@ -18,22 +18,23 @@ function MqServiceCreate( $host , $port ) {
                 $i ++;
                 $spawn=socket_accept($socket) or die("Could not accept incoming connection".PHP_EOL);
                 $input=socket_read($spawn,$GLOBALS['cfg']['receive_len']);
-                $input=trim($input);  
+                $input=trim($input);
+				$input=unserialize($input);
 
                 if ($input) {
 
-                    if ( $input == __STOP__ ) {
+                    if ( $input['act'] == __STOP__ ) {
                         MqServiceRunShell($data);
                         socket_close($spawn);
                         socket_close($socket);
                         break;
 
-                    } elseif ( $input == __QUERY__ ) {
+                    } elseif ( $input['act'] == __QUERY__ ) {
                         MqServiceRunShell($data);
                         $data = array();
                         $i = 0;
 
-                    } elseif ( $input == __STATUS__ ) {
+                    } elseif ( $input['act'] == __STATUS__ ) {
                         $MyPid = getmypid();
                         $CountData = count($data);
                         $StartTime = $GLOBALS['server_start_time'];

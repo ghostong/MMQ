@@ -15,7 +15,7 @@ if ( is_file ( $LibCfgFile ) ) {
 while (true) {
     sleep($GLOBALS['cfg']['free_time']);
     foreach ($GLOBALS['cfg']['host'] as $val) {
-        $query['str'] = __QUERY__;
+        $query['act'] = __QUERY__;
         MqClientQuery($val,$query,$read);
 
     }

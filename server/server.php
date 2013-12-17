@@ -22,7 +22,7 @@ if ( __ARGV__ == 'start' ) {
 
 } elseif ( __ARGV__ == 'stop' ){
     foreach ($cfg['host'] as $val ) {
-        $query['str'] = __STOP__;
+        $query['act'] = __STOP__;
         MqClientQuery ( $val , $query );
     }
     $PidArr = MqServiceFile2Pid();
@@ -38,7 +38,7 @@ if ( __ARGV__ == 'start' ) {
 } elseif ( __ARGV__ == 'status' ) {
     $OutPut = '';
     foreach ($cfg['host'] as $val ) {
-        $query['str'] = __STATUS__;
+        $query['act'] = __STATUS__;
         $OutPut .= MqClientQuery ( $val , $query );
     }
     if ( $OutPut ) {
