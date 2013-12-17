@@ -55,6 +55,8 @@ function MqServiceCreate( $host , $port ) {
                     } else {
                         socket_write($spawn,true,strlen(true)) or die("Could not write output".PHP_EOL);
                         $data[]=$input;
+						echo 11111111111111111111111111;
+						var_dump ($i , $GLOBALS['cfg']['max_cache'],$input);
                         if ($i >= $GLOBALS['cfg']['max_cache']){
                             MqServiceRunShell($data);
                             $data = array();
