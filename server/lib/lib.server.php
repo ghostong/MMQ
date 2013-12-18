@@ -11,6 +11,9 @@ function MqServiceCreate( $host , $port ) {
             $result=socket_bind($socket,$host,$port) or die("Could not bind to socket".PHP_EOL);
             $result=socket_listen($socket,3) or die("Could not set up socket listener".PHP_EOL);
             
+            MqServiceCleanPidFile();
+            MqServiceDaemon();
+
             $i=0;
             $data = array();
 
@@ -127,7 +130,7 @@ function MqServiceDaemon(){
     if ($pid == 0) {
         MqServicePid2File( getmypid() );
         pcntl_signal( SIGCHLD , SIG_IGN);
-        pcntl_exec( $GLOBALS['cfg']['php_path'] , array ( $GLOBALS['DaeProcFile'] ) );
+        pcntl_exec( $GLOBALS['cfg']['php_path'] , array ( $GLOBALS['DaeProcFile'] ) ,array('ShellParam2'=>$_SERVER["argv"][2],'ShellParam3'=>$_SERVER["argv"][3]));
     }
 
 }

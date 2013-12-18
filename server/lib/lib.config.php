@@ -12,8 +12,18 @@ if ( !function_exists('socket_create') ){
     exit;
 }
 
+//Config Param
+if ( strtolower ( $_SERVER["argv"][2] ) == '-c' ) {
+    define ( '__CONFIGFILE__' , strtolower ( $_SERVER["argv"][3] ) );
+}
+
 //User Config
-$UserCfgFile = __RD__.__DS__.'user'.__DS__.'user.cfg.php';
+if ( defined('__CONFIGFILE__') ){
+    $UserCfgFile = __CONFIGFILE__;
+}else{
+    $UserCfgFile = __RD__.__DS__.'user'.__DS__.'user.cfg.php';
+}
+
 if ( is_file ( $UserCfgFile ) ) {
     require ( $UserCfgFile );
 }else{

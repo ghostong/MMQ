@@ -12,14 +12,11 @@ if ( is_file ( $LibCfgFile) ) {
 }
 
 if ( __ARGV__ == 'start' ) {
-    MqServiceCleanPidFile();
-    MqServiceDaemon();
     foreach ($cfg['host'] as $val ) {
         $host = $val['host'];
         $port = $val['port'];
         MqServiceCreate( $host , $port );
     }
-
 } elseif ( __ARGV__ == 'stop' ){
     foreach ($cfg['host'] as $val ) {
         $query['act'] = __STOP__;
@@ -34,7 +31,6 @@ if ( __ARGV__ == 'start' ) {
         echo "Not search process !".PHP_EOL;
     }
     MqServiceCleanPidFile();
-
 } elseif ( __ARGV__ == 'status' ) {
     $OutPut = '';
     foreach ($cfg['host'] as $val ) {
