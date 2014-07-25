@@ -1,4 +1,4 @@
-MMQ
+MQM
 ===
 
 Mini Queue Manager
