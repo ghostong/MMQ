@@ -7,7 +7,8 @@ function MqServiceCreate( $host , $port ) {
         if ($pid == 0) {
 
             pcntl_signal( SIGCHLD , SIG_IGN);
-            $socket=socket_create(AF_INET,SOCK_STREAM,0) or die("Could not create socket".PHP_EOL);  
+            $socket=socket_create(AF_INET,SOCK_STREAM,0) or die("Could not create socket".PHP_EOL);
+            socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1);
             $result=socket_bind($socket,$host,$port) or die("Could not bind to socket".PHP_EOL);
             $result=socket_listen($socket,3) or die("Could not set up socket listener".PHP_EOL);
             
