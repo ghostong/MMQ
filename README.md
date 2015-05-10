@@ -1,4 +1,3 @@
 MQM
 ===
-
-Mini Queue Manager
+Manager Queue Mini
